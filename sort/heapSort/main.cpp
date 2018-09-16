@@ -4,6 +4,12 @@
  */
 using namespace std;
 
+/**
+ * 最大堆
+ * @param R
+ * @param i
+ * @param len
+ */
 void HeapDown(int *R, int i, int len) {
     int child = i * 2 + 1;
     int current = i;
@@ -20,26 +26,40 @@ void HeapDown(int *R, int i, int len) {
     }
 }
 
+/**
+ * 最小堆
+ * @param R
+ * @param i
+ * @param len
+ */
+void HeapUp(int *R,int i,int len){
+    int child = 2*i+1;
+    int current = i;
+    for (; child < len; current = child, child = child * 2 + 1) {
+        // it has rightChild and who bigger
+        if (child + 1 < len && R[child] > R[child + 1]) {
+            child++;
+        }
+        if (R[current] > R[child]) {
+            swap(R[current], R[child]);
+        } else {
+            break;
+        }
+    }
+}
+
 void HeapBuild(int *R, int len) {
     //get the node who has children,
     int i = len / 2 - 1;
     for (; i >= 0; i--) {
-        HeapDown(R, i, len);
+        HeapUp(R, i, len);
     }
-//    for (i = len - 1; i > 0; i--)
-//    {
-//        // 交换a[0]和a[i]。交换后，a[i]是a[0...i]中最大的。
-//        swap(R[0], R[i]);
-//        // 调整a[0...i-1]，使得a[0...i-1]仍然是一个最大堆。
-//        // 即，保证a[i-1]是a[0...i-1]中的最大值。
-//        HeapDown(R, 0, i);
-//    }
 }
 
 void HeapSort(int *R, int len) {
     for (int i = len - 1; i > 0; i--) {
         swap(R[0], R[i]);
-        HeapDown(R, 0, i);
+        HeapUp(R, 0, i);
     }
 }
 
@@ -62,8 +82,7 @@ int main() {
     cout << endl;
 
 
-    //heapSortDesc(a, ilen);        // 降序排列
-    
+
 
     HeapSort(a, ilen);
     cout << "after  sort:";
