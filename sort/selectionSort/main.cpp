@@ -4,6 +4,7 @@ using namespace std;
 
 /**
  * 每次选择剩下的最小的，然后放到相应的位置
+ * 遍历每次的数组，选择其中最小的放到开头
  * @return
  */
 void selectionSort(int *R, int n) {
