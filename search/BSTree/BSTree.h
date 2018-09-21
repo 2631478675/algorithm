@@ -43,9 +43,9 @@ public:
     void postOrder();
 
 
-    BSTNode<T> *minimumNode();
+    BSTNode<T>* minimumNode();
 
-    BSTNode<T> *maximumNode();
+    BSTNode<T>* maximumNode();
 
     T minimumKey();
 
@@ -117,9 +117,9 @@ void BSTree<T>::insert(T key) {
 }
 
 template<class T>
-void BSTree<T>::insert(BSTNode<T> *&tree, BSTNode<T> *z) {
-    BSTNode<T> *y = NULL;
-    BSTNode<T> *x = tree;
+void BSTree<T>::insert(BSTNode<T>*& tree, BSTNode<T>* z) {
+    BSTNode<T>* y = NULL;
+    BSTNode<T>* x = tree;
 
     while (x != NULL) {
         y = x;
@@ -170,12 +170,23 @@ void BSTree<T>::midOrder() {
 }
 
 template<class T>
-void BSTree<T>::midOrder(BSTNode<T> *&tree) const {
+void BSTree<T>::midOrder(BSTNode<T>*& tree) const {
     if(tree != NULL){
         midOrder(tree->left);
         cout << tree->key << " ";
         midOrder(tree->right);
     }
+}
+
+/**
+ * 
+ * @tparam T
+ * @param key
+ * @return
+ */
+template <class T>
+BSTNode<T>* BSTree::search(T key) {
+    search(mRoot,key);
 }
 
 #endif //BSTREE_BSTREE_H
