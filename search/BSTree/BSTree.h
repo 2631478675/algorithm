@@ -179,7 +179,7 @@ void BSTree<T>::midOrder(BSTNode<T>*& tree) const {
 }
 
 /**
- * 
+ *
  * @tparam T
  * @param key
  * @return
