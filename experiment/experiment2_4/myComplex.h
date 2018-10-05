@@ -118,10 +118,8 @@ myComplex &myComplex::operator*=(myComplex &rhs) {
 }
 
 myComplex &myComplex::operator/=(myComplex &rhs) {
-
-    myComplex complex;
-    complex= *this /rhs;
-    return complex;
+    *this = *this / rhs;
+    return *this ;
 }
 
 myComplex operator+(myComplex m, myComplex n) {
