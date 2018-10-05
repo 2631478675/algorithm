@@ -39,6 +39,7 @@ Person::Person(string PersonName, int PersonAge, char PersonGender) : name(Perso
 int Person::get_counter() {
     return counter;
 }
+
 Person::~Person() {
 }
 
@@ -150,13 +151,14 @@ Postgraduate::Postgraduate() { counter++; }
 Postgraduate::Postgraduate(string PostgraduateName, int PostgraduateAge, char PostgraduateGender,
                            int PostgraduateStudentID, string PostgraduateDepartment, string PostgraduateTeacherName)
         : Person(PostgraduateName, PostgraduateAge, PostgraduateGender), StudentID(PostgraduateStudentID),
-          Department(PostgraduateDepartment),TeacherName(PostgraduateTeacherName) {
+          Department(PostgraduateDepartment), TeacherName(PostgraduateTeacherName) {
     counter++;
 }
 
 void Postgraduate::show() {
     cout << "研究生" << name << "的个人信息：" << endl;
-    cout << "年龄: " << age << ",性别：" << gender << ",学号：" << StudentID << ",系别：" << Department << ",导师：" << TeacherName << endl;
+    cout << "年龄: " << age << ",性别：" << gender << ",学号：" << StudentID << ",系别：" << Department << ",导师：" << TeacherName
+         << endl;
 }
 
 Postgraduate::~Postgraduate() {
