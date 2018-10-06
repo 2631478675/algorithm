@@ -11,7 +11,8 @@
 - 将比目标值小的放在左边，大的放到右边
 
 ![image](http://p3379ff71.bkt.clouddn.com/9.50.37.png)
-- selectionSort（选择排序）
+### selectionSort（选择排序）
+![image](http://p3379ff71.bkt.clouddn.com/11.25.57.png)
 - shellSort（希尔排序）
 ### straight（直接排序）
 - 每一次将目标数直接插入到有序列的合适位置
