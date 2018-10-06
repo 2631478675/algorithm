@@ -9,7 +9,6 @@ int main() {
     teacher.show();
     Undergraduate undergraduate("liu",10,'h',10,"liu");
     undergraduate.show();
-    cout << teacher.get_counter() << endl;
     cout << p->get_counter() << endl;
     return 0;
 }
