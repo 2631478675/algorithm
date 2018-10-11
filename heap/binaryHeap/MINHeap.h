@@ -86,7 +86,7 @@ void MinHeap<T>::filterUp(int start) {
     T valueOFCurrent = heap[current];
 
     for(;current > 0;){
-        if(heap[parent] < heap[current]){
+        if(heap[parent] > heap[current]){
             swap(heap[parent],heap[current]);
             current = parent;
             parent = (current-1)/2;
@@ -118,7 +118,8 @@ void MinHeap<T>::filterDown(int start, int end) {
 
 template<class T>
 int MinHeap<T>::insert(T data) {
-    if(mSize = mCapacity){
+//    cout << " ths msize is:" << mSize << "the mcapacity is :"<< mCapacity << endl;
+    if(mSize == mCapacity){
         cout << "the heap is full";
         return -1;
     }
