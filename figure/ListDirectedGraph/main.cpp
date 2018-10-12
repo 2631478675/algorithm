@@ -1,9 +1,5 @@
 #include <iostream>
-#include "MatrixUDG.h"
-
-
-using namespace std;
-
+#include "MatrixDG.h"
 
 int main() {
     char vexs[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
@@ -18,16 +14,16 @@ int main() {
     int vlen = sizeof(vexs)/sizeof(vexs[0]);
     int elen = sizeof(edges)/sizeof(edges[0]);
 
-    MatrixUDG* pG;
-    MatrixUDG* pGByAutomatic;
+    MatrixDG* pG;
+    MatrixDG* pGByAutomatic;
 
     // 采用已有的"图"
-    pGByAutomatic = new MatrixUDG(vexs, vlen, edges, elen);
+    pGByAutomatic = new MatrixDG(vexs, vlen, edges, elen);
     pGByAutomatic->print();
-    pGByAutomatic->DFS();
+
 
     // 自定义"图"(输入矩阵队列)
-    pG = new MatrixUDG();
+    pG = new MatrixDG();
     pG->print();
 
     return 0;
