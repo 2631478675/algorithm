@@ -17,15 +17,18 @@ int main() {
             {'F', 'G'}};
     int vlen = sizeof(vexs)/sizeof(vexs[0]);
     int elen = sizeof(edges)/sizeof(edges[0]);
+
     MatrixUDG* pG;
+    MatrixUDG* pGByAutomatic;
+
+    // 采用已有的"图"
+    pGByAutomatic = new MatrixUDG(vexs, vlen, edges, elen);
+    pGByAutomatic->print();
+
 
     // 自定义"图"(输入矩阵队列)
     pG = new MatrixUDG();
-
-    // 采用已有的"图"
-//    pG = new MatrixUDG(vexs, vlen, edges, elen);
-
-    pG->print();   // 打印图
+    pG->print();
 
     return 0;
 }
