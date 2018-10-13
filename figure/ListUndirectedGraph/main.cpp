@@ -25,7 +25,7 @@ int main() {
     pGByAutomatic = new MatrixUDG(vexs, vlen, edges, elen);
     pGByAutomatic->print();
     pGByAutomatic->DFS();
-
+    pGByAutomatic->BFS();
     // 自定义"图"(输入矩阵队列)
     pG = new MatrixUDG();
     pG->print();

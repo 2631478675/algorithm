@@ -24,10 +24,13 @@ private:
     char readChar();
 
     int getPosition(char);
+
     // 返回顶点v的第一个邻接顶点的索引，失败则返回-1
     int firstVertex(int v);
+
     // 返回顶点v相对于w的下一个邻接顶点的索引，失败则返回-1
     int nextVertex(int v, int w);
+
     // 深度优先搜索遍历图的递归实现
     void DFS(int i, int *visited);
 
@@ -42,6 +45,7 @@ public:
 
     // 深度优先搜索遍历图
     void DFS();
+
     // 广度优先搜索（类似于树的层次遍历）
     void BFS();
 };
@@ -124,8 +128,8 @@ MatrixUDG::MatrixUDG(char *vexsingle, int vlen, char (*edge)[2], int elen) {
     vexNum = vlen;
     edgeNum = elen;
 
-    for(int i = 0; i < vexNum; i++){
-        for(int j = 0; j < edgeNum; j++){
+    for (int i = 0; i < vexNum; i++) {
+        for (int j = 0; j < edgeNum; j++) {
             matrix[i][j] = 0;
         }
     }
@@ -150,11 +154,10 @@ MatrixUDG::MatrixUDG(char *vexsingle, int vlen, char (*edge)[2], int elen) {
  * @return
  */
 
-int MatrixUDG::nextVertex(int v, int w)
-{
+int MatrixUDG::nextVertex(int v, int w) {
     int i;
 
-    if (v<0 || v>(vexNum-1) || w<0 || w>(vexNum-1))
+    if (v < 0 || v > (vexNum - 1) || w < 0 || w > (vexNum - 1))
         return -1;
 
     for (i = w + 1; i < vexNum; i++)
@@ -163,17 +166,17 @@ int MatrixUDG::nextVertex(int v, int w)
 
     return -1;
 }
+
 /**
  * 返回顶点v的第一个邻接顶点的索引，失败则返回-1
  * 根据data的索引v，去寻找它的
  * @param v
  * @return
  */
-int MatrixUDG::firstVertex(int v)
-{
+int MatrixUDG::firstVertex(int v) {
     int i;
 
-    if (v<0 || v>(vexNum-1))
+    if (v < 0 || v > (vexNum - 1))
         return -1;
 
     for (i = 0; i < vexNum; i++)
@@ -188,25 +191,23 @@ int MatrixUDG::firstVertex(int v)
  * @param i：将要访问的data的索引
  * @param visited : 顶点标记为0或为1
  */
-void MatrixUDG::DFS(int i, int *visited)
-{
+void MatrixUDG::DFS(int i, int *visited) {
     int w;
 
     visited[i] = 1;
     cout << vexs[i] << " ";
     // 遍历该顶点的所有邻接顶点。若是没有访问过，那么继续往下走
-    for (w = firstVertex(i); w >= 0; w = nextVertex(i, w))
-    {
+    for (w = firstVertex(i); w >= 0;) {
         if (!visited[w])
             DFS(w, visited);
+        w = nextVertex(i, w);
     }
 }
 
 /**
  * 深度优先遍历（Depth-First-Search）
  */
-void MatrixUDG::DFS()
-{
+void MatrixUDG::DFS() {
     int visited[MAX];       // 顶点访问标记，如果顶点没被访问，则设置visited[i] = 0;否则为1
 
     // 初始化所有顶点都没有被访问
@@ -214,8 +215,7 @@ void MatrixUDG::DFS()
         visited[i] = 0;
 
     cout << "DFS: ";
-    for (int i = 0; i < vexNum; i++)
-    {
+    for (int i = 0; i < vexNum; i++) {
         if (!visited[i])
             DFS(i, visited);
     }
@@ -223,7 +223,39 @@ void MatrixUDG::DFS()
 }
 
 
+/**
+ * 使用到了队列
+ */
+void MatrixUDG::BFS() {
+    int visited[vexNum];
+    int head = 0 , rear = 0;     // 辅组队列
+    int queue[MAX];
 
+    for (int i = 0; i < vexNum; i++) {
+        visited[i] = 0;
+    }
+
+    cout << "BFS: ";
+    for (int i = 0; i < vexNum; i++) {
+        if (visited[i] == 0) {
+            cout << vexs[i] << " ";
+            visited[i] = 1;
+            queue[rear++] = i;
+        }
+        while(head != rear){
+            int j = queue[head++];
+            for(int k = firstVertex(j); k >= 0; k = nextVertex(j, k)){
+                if (!visited[k])
+                {
+                    visited[k] = 1;
+                    cout << vexs[k] << " ";
+                    queue[rear++] = k;
+                }
+            }
+        }
+    }
+    cout << endl;
+}
 
 
 

@@ -21,9 +21,9 @@ int main() {
     pGByAutomatic->print();
     pGByAutomatic->DFS();
     pGByAutomatic->BFS();
-    // 自定义"图"(输入矩阵队列)
-    pG = new TableUndirectedGraph();
-    pG->print();   // 打印图
+//    // 自定义"图"(输入矩阵队列)
+//    pG = new TableUndirectedGraph();
+//    pG->print();   // 打印图
 
     return 0;
 }

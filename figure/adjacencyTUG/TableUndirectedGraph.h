@@ -210,7 +210,7 @@ void TableUndirectedGraph::BFS() {
     int visited[mVexNum];
     int head = 0 , rear = 0;     // 辅组队列
     int queue[MAX];
-    EdgeNode *node = new EdgeNode();
+    EdgeNode *node;
 
     for (int i = 0; i < mVexNum; i++) {
         visited[i] = 0;
@@ -219,7 +219,7 @@ void TableUndirectedGraph::BFS() {
     cout << "BFS : ";
     for (int i = 0; i < mVexNum; i++) {
         if (visited[i] == 0) {
-            cout << mVexs[i].data << " ";
+            cout << mVexs[i].data << " ,";
             visited[i] = 1;
             queue[rear++] = i;
         }
@@ -227,10 +227,12 @@ void TableUndirectedGraph::BFS() {
             int j = queue[head++];
             node = mVexs[j].firstEdge;
             while (node != NULL) {
-                if (visited[node->ivex] == 0)
-                    cout << mVexs[node->ivex].data << " ";
-                    visited[node->ivex] = 1;
-                    queue[rear++] = mVexs[node->ivex].data;
+                int k = node->ivex;
+                if (visited[k] == 0){
+                    cout << mVexs[k].data << " ," ;
+                    visited[k] = 1;
+                    queue[rear++] = k;
+                }
                 node = node->nextEdge;
             }
         }
