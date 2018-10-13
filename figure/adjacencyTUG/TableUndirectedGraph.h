@@ -35,20 +35,19 @@ private: // 私有成员
     VexNode mVexs[MAX];
 
 public:
-    // 创建邻接表对应的图(自己输入)
     TableUndirectedGraph();
 
-    // 创建邻接表对应的图(用已提供的数据)
     TableUndirectedGraph(char vexs[], int vlen, char edges[][2], int elen);
 
     ~TableUndirectedGraph();
 
-    // 打印邻接表图
     void print();
 
     void DFS();
 
     void DFS(int, int *);
+
+    void BFS();
 
 private:
     // 读取一个输入字符
@@ -204,5 +203,39 @@ void TableUndirectedGraph::DFS(int index, int *visited) {
     }
 }
 
+/**
+ * 使用到了队列
+ */
+void TableUndirectedGraph::BFS() {
+    int visited[mVexNum];
+    int head = 0 , rear = 0;     // 辅组队列
+    int queue[MAX];
+    EdgeNode *node = new EdgeNode();
+
+    for (int i = 0; i < mVexNum; i++) {
+        visited[i] = 0;
+    }
+
+    cout << "BFS : ";
+    for (int i = 0; i < mVexNum; i++) {
+        if (visited[i] == 0) {
+            cout << mVexs[i].data << " ";
+            visited[i] = 1;
+            queue[rear++] = i;
+        }
+        while(head != rear){
+            int j = queue[head++];
+            node = mVexs[j].firstEdge;
+            while (node != NULL) {
+                if (visited[node->ivex] == 0)
+                    cout << mVexs[node->ivex].data << " ";
+                    visited[node->ivex] = 1;
+                    queue[rear++] = mVexs[node->ivex].data;
+                node = node->nextEdge;
+            }
+        }
+    }
+    cout << endl;
+}
 
 #endif //ADJACENCYTUG_TABLEUNDIRECTEDGRAPH_H
