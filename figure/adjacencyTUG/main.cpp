@@ -19,7 +19,7 @@ int main() {
     // 采用已有的"图"
     pGByAutomatic = new TableUndirectedGraph(vexs, vlen, edges, elen);
     pGByAutomatic->print();
-
+    pGByAutomatic->DFS();
     // 自定义"图"(输入矩阵队列)
     pG = new TableUndirectedGraph();
     pG->print();   // 打印图

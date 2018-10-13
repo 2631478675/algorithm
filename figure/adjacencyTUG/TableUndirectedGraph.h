@@ -46,6 +46,10 @@ public:
     // 打印邻接表图
     void print();
 
+    void DFS();
+
+    void DFS(int, int *);
+
 private:
     // 读取一个输入字符
     char readChar();
@@ -128,17 +132,18 @@ TableUndirectedGraph::TableUndirectedGraph() {
     }
 
 }
-TableUndirectedGraph::TableUndirectedGraph(char vexs[], int vlen, char edges[][2], int elen){
+
+TableUndirectedGraph::TableUndirectedGraph(char vexs[], int vlen, char edges[][2], int elen) {
     mEdgNum = elen;
     mVexNum = vlen;
 
-    for(int i = 0; i < mVexNum; i++){
+    for (int i = 0; i < mVexNum; i++) {
         mVexs[i].data = vexs[i];
         mVexs[i].firstEdge = NULL;
     }
-    for(int i = 0; i < mEdgNum; i++){
-        EdgeNode * edgeNode1 = new EdgeNode();
-        EdgeNode * edgeNode2 = new EdgeNode();
+    for (int i = 0; i < mEdgNum; i++) {
+        EdgeNode *edgeNode1 = new EdgeNode();
+        EdgeNode *edgeNode2 = new EdgeNode();
 
         int nodePosition1 = getPosition(edges[i][0]);
         int nodePosition2 = getPosition(edges[i][1]);
@@ -148,18 +153,19 @@ TableUndirectedGraph::TableUndirectedGraph(char vexs[], int vlen, char edges[][2
         edgeNode2->ivex = nodePosition1;
         edgeNode2->nextEdge = NULL;
 
-        if(mVexs[nodePosition1].firstEdge == NULL){
+        if (mVexs[nodePosition1].firstEdge == NULL) {
             mVexs[nodePosition1].firstEdge = edgeNode1;
-        } else{
-            linkLast(mVexs[nodePosition1].firstEdge,edgeNode1);
+        } else {
+            linkLast(mVexs[nodePosition1].firstEdge, edgeNode1);
         }
-        if(mVexs[nodePosition2].firstEdge == NULL){
+        if (mVexs[nodePosition2].firstEdge == NULL) {
             mVexs[nodePosition2].firstEdge = edgeNode2;
-        } else{
-            linkLast(mVexs[nodePosition2].firstEdge,edgeNode2);
+        } else {
+            linkLast(mVexs[nodePosition2].firstEdge, edgeNode2);
         }
     }
 }
+
 void TableUndirectedGraph::print() {
     for (int i = 0; i < mVexNum; i++) {
         cout << "[ " << mVexs[i].data << " ]";
@@ -171,5 +177,32 @@ void TableUndirectedGraph::print() {
         cout << endl;
     }
 }
+
+void TableUndirectedGraph::DFS() {
+    int visited[mVexNum];
+    for (int i = 0; i < mVexNum; i++) {
+        visited[i] = 0;
+    }
+
+    cout << "DFS : ";
+    for (int i = 0; i < mVexNum; i++) {
+        if (visited[i] == 0)
+            DFS(i, visited);
+    }
+    cout << endl;
+}
+
+void TableUndirectedGraph::DFS(int index, int *visited) {
+    cout << mVexs[index].data << " ";
+    visited[index] = 1;
+    EdgeNode *node = new EdgeNode();
+    node = mVexs[index].firstEdge;
+    while (node != NULL) {
+        if (visited[node->ivex] == 0)
+            DFS(node->ivex, visited);
+        node = node->nextEdge;
+    }
+}
+
 
 #endif //ADJACENCYTUG_TABLEUNDIRECTEDGRAPH_H
