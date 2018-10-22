@@ -24,14 +24,9 @@ int main() {
     int vlen = sizeof(vexs) / sizeof(vexs[0]);
     MatrixUDG *pG;
 
-    // 自定义"图"(输入矩阵队列)
-    //pG = new MatrixUDG();
-    // 采用已有的"图"
     pG = new MatrixUDG(vexs, vlen, matrix);
 
     pG->print();   // 打印图
-    pG->prim(0);   // prim算法生成最小生成树
-    pG->kruskal(); // Kruskal算法生成最小生成树
 
     // dijkstra算法获取"第4个顶点"到其它各个顶点的最短距离
     pG->dijkstra(3, prev, dist);
