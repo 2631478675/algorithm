@@ -122,7 +122,7 @@ myComplex &myComplex::operator/=(myComplex &rhs) {
     return *this ;
 }
 
-myComplex* operator+(myComplex m, myComplex n) {
+myComplex operator+(myComplex m, myComplex n) {
     myComplex complex;
     complex.real = m.real + n.real;
     complex.imag = m.imag + n.imag;

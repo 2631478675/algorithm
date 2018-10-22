@@ -26,7 +26,7 @@ public:
 
     static void getAllSalary(int salary) {
         allSalary += salary;
-        cout << " the allSalary is : " << allSalary << endl;
+        cout << "the allSalary is : " << allSalary << endl;
     }
 };
 

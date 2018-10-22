@@ -91,7 +91,7 @@ bool STACK::Pop() {
 bool STACK::visit() {
     int size = this->size;
     if (size == 0)
-        cout << "这是个空栈";
+        cout << "the stack is empty";
     pNode node = this->Top;
     while (size--) {
         cout << node->data << " ";
@@ -121,6 +121,7 @@ Item STACK::GetTOpData() {
 
 // 清除栈
 bool STACK::ClearStack() {
+    cout << "clear stack ,so ";
     while (this->IsEmpty() == false) {
         this->Pop();
     }
@@ -134,7 +135,7 @@ bool STACK::DestroyStack() {
         this->Top = this->Top->pNext;
         delete node;
     }
-    cout << "已经摧毁栈" << endl;
+    cout << "destroy stack" << endl;
     return true;
 }
 

@@ -3,12 +3,12 @@
 
 int main() {
     Person * p;
-    Teacher teacher("liu",10,'h',10,"liu");
+    Teacher teacher("deki,liu",10,'h',10,"master");
     teacher.show();
-    teacher.set("liu",11,'h',10,"liu");
+    teacher.set("deki,liu",11,'h',10,"master");
     teacher.show();
-    Undergraduate undergraduate("liu",10,'h',10,"liu");
+    Undergraduate undergraduate("deki,liu",10,'h',10,"inter");
     undergraduate.show();
-    cout << p->get_counter() << endl;
+    cout << "现在统计的学生和老师总数是： " << p->get_counter() << endl;
     return 0;
 }
