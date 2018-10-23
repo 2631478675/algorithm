@@ -1,7 +1,9 @@
 #include <iostream>
 #include "MatrixUDG.h"
+
 #define MAX    100
 #define INF    (~(0x1<<31))        // 无穷大(即0X7FFFFFFF)
+
 int main() {
     int prev[MAX] = {0};
     int dist[MAX] = {0};
