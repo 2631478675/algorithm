@@ -2,7 +2,7 @@
 #include "Employee.h"
 
 int main() {
-    Employee * p;
+    Employee *p;
     p = new Manager();
     p->pay();
     p->display();
