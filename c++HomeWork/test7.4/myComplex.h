@@ -1,10 +1,9 @@
 //
-// Created by I500042 on 10/5/2018.
+// Created by 刘元林 on 2018/11/12.
 //
 
-#ifndef EXPERIMENT2_4_MYCOMPLEX_H
-#define EXPERIMENT2_4_MYCOMPLEX_H
-
+#ifndef TEST7_4_MYCOMPLEX_H
+#define TEST7_4_MYCOMPLEX_H
 #include <iostream>
 
 #include <cmath>
@@ -12,13 +11,6 @@
 
 using namespace std;
 
-
-/**
- * 复数z=a+bi
- * 实部：a
- * 虚部：b
- * 模： |z|=√(a²+b²)
- */
 class myComplex {
 private:
     double real;
@@ -45,27 +37,17 @@ public:
 
     myComplex &operator=(const myComplex &rhs);  //类对象的赋值
 
-    myComplex &operator+=(myComplex &rhs);
 
-    myComplex &operator-=(myComplex &rhs);
-
-    myComplex &operator*=(myComplex &rhs);
-
-    myComplex &operator/=(myComplex &rhs);
-
-    friend myComplex operator+(myComplex m, myComplex n);
-
-    friend myComplex operator-(myComplex m, myComplex n);
 
     friend myComplex operator*(myComplex m, myComplex n);
 
     friend myComplex operator/(myComplex m, myComplex n);
 
+
     friend ostream &operator<<(ostream &os, myComplex &c);
 
     friend istream &operator>>(istream &is, myComplex &c);
 };
-
 myComplex::myComplex() {}
 
 myComplex::myComplex(double a) : real(a) {}
@@ -100,42 +82,6 @@ myComplex &myComplex::operator=(const myComplex &rhs) {
     return *this;
 }
 
-myComplex &myComplex::operator+=(myComplex &rhs) {
-    this->real += rhs.real;
-    this->imag += rhs.imag;
-    return *this;
-}
-
-myComplex &myComplex::operator-=(myComplex &rhs) {
-    this->real -= rhs.real;
-    this->imag -= rhs.imag;
-    return *this;
-}
-
-myComplex &myComplex::operator*=(myComplex &rhs) {
-    return *this = *this * rhs;
-}
-
-myComplex &myComplex::operator/=(myComplex &rhs) {
-    *this = *this / rhs;
-    return *this ;
-}
-
-myComplex operator+(myComplex m, myComplex n) {
-    myComplex complex;
-    complex.real = m.real + n.real;
-    complex.imag = m.imag + n.imag;
-    return complex;
-}
-
-myComplex operator-(myComplex m, myComplex n) {
-    myComplex complex;
-    complex.real = m.real - n.real;
-    complex.imag = m.imag - n.imag;
-
-    return complex;
-}
-
 myComplex operator*(myComplex m, myComplex n) {
     myComplex complex;
     complex.real = m.real * n.real - m.imag * n.imag;
@@ -167,5 +113,4 @@ istream &operator>>(istream &is, myComplex &c) {
     is >> c.imag;
     return is;
 }
-
-#endif //EXPERIMENT2_4_MYCOMPLEX_H
+#endif //TEST7_4_MYCOMPLEX_H
