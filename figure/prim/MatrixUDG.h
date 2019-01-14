@@ -116,7 +116,11 @@ void MatrixUDG::prim(int start)
     // 初始化"顶点的权值数组"，
     // 将每个顶点的权值初始化为"第start个顶点"到"该顶点"的权值。
     for (i = 0; i < mVexNum; i++ )
+    {
         weights[i] = mMatrix[start][i];
+    }
+
+
     // 将第start个顶点的权值初始化为0。
     // 可以理解为"第start个顶点到它自身的距离为0"。
     weights[start] = 0;
@@ -124,9 +128,9 @@ void MatrixUDG::prim(int start)
     for (i = 0; i < mVexNum; i++)
     {
         // 由于从start开始的，因此不需要再对第start个顶点进行处理。
-        if(start == i)
+        if(start == i){
             continue;
-
+        }
         j = 0;
         k = 0;
         min = INF;
